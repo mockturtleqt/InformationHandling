@@ -20,7 +20,8 @@ public class TextManipulation {
     private ParagraphBreaker paragraphBreaker;
     private SentenceBreaker sentenceBreaker;
 
-    private TextManipulation(){}
+    private TextManipulation() {
+    }
 
     public static TextManipulation getInstance() {
         if (instanceCounter == 0) {

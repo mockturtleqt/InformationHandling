@@ -3,7 +3,7 @@ package com.epam.fourth.breaker_chain;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextBreaker extends BasicBreaker{
+public class TextBreaker extends BasicBreaker {
     static final String NEW_LINE = "\t";
 
     public String[] breakText(String text) {

@@ -5,14 +5,13 @@ import com.epam.fourth.breaker_chain.BasicBreaker;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class TextComposite implements Component{
+public class TextComposite implements Component {
     private List<Component> components = new ArrayList<>();
     private String content;
 
-    public TextComposite() {}
+    public TextComposite() {
+    }
 
     public TextComposite(String content) {
         this.content = content;
@@ -35,13 +34,7 @@ public class TextComposite implements Component{
                 components.add(new TextComposite(part));
             }
         }
-//        if (brokenText.length != 0) {
-//            for (String part : brokenText) {
-//                if (!part.isEmpty() && !part.equals(content)) {
-//                    components.add(new TextComposite(part));
-//                }
-//            }
-//        }
+
         System.out.println("content: \n" + content);
         components.forEach(System.out::println);
         components.forEach(Component::operation);
