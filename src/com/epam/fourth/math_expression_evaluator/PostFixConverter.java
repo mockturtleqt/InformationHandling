@@ -18,9 +18,6 @@ public class PostFixConverter {
         convertExpression();
     }
 
-    /* The approach is basically, if it's a number, push it to postfix list
-     * else if it's an operator, push it to stack
-     */
     private void convertExpression()
     {
         String digit = "[\\d]+";
