@@ -6,22 +6,23 @@ import java.util.Scanner;
 
 public class Client {
     private ArrayList<AbstractMathExpression> listExpression;
+
     public Client(List<String> expression) {
         listExpression = new ArrayList<>();
         parse(expression);
     }
 
     private void parse(List<String> expression) {
-        for (String lexeme: expression) {
+        for (String lexeme : expression) {
             if (lexeme.isEmpty()) {
                 continue;
             }
             char temp = lexeme.charAt(0);
             switch (temp) {
-                case '+' :
+                case '+':
                     listExpression.add(new TerminalExpressionPlus());
                     break;
-                case '-' :
+                case '-':
                     listExpression.add(new TerminalExpressionMinus());
                     break;
                 case '/':

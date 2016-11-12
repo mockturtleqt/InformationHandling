@@ -1,7 +1,8 @@
-package com.epam.fourth.breaker_chain;
+package com.epam.fourth.chain;
+
+import com.epam.fourth.entity.Component;
 
 public abstract class BasicBreaker {
-    final String WITH_DELIMETER = "((?<=%1$s)(?=%1$s))";
     protected BasicBreaker successor;
 
     public void setSuccessor(BasicBreaker successor) {
@@ -9,4 +10,6 @@ public abstract class BasicBreaker {
     }
 
     public abstract String[] breakText(String data);
+
+    public abstract Component getComponent(String data);
 }

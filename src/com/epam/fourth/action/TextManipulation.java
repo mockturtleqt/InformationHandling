@@ -1,9 +1,5 @@
 package com.epam.fourth.action;
 
-import com.epam.fourth.breaker_chain.BasicBreaker;
-import com.epam.fourth.breaker_chain.ParagraphBreaker;
-import com.epam.fourth.breaker_chain.SentenceBreaker;
-import com.epam.fourth.breaker_chain.TextBreaker;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -16,9 +12,6 @@ public class TextManipulation {
     private static Logger logger = Logger.getLogger(TextManipulation.class);
     private static int instanceCounter;
     private static TextManipulation instance;
-    private TextBreaker textBreaker;
-    private ParagraphBreaker paragraphBreaker;
-    private SentenceBreaker sentenceBreaker;
 
     private TextManipulation() {
     }
@@ -43,15 +36,5 @@ public class TextManipulation {
         }
         return content;
 
-    }
-
-    public BasicBreaker getBreaker() {
-        textBreaker = new TextBreaker();
-        paragraphBreaker = new ParagraphBreaker();
-        sentenceBreaker = new SentenceBreaker();
-
-        sentenceBreaker.setSuccessor(paragraphBreaker);
-        paragraphBreaker.setSuccessor(textBreaker);
-        return sentenceBreaker;
     }
 }
