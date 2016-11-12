@@ -25,7 +25,7 @@ public class TextComposite implements Component {
         components.remove(component);
     }
 
-    public void operation() {
+    public void breakText() {
         TextManipulation textManipulation = TextManipulation.getInstance();
         BasicBreaker breaker = textManipulation.getBreaker();
         String[] brokenText = breaker.breakText(content);
@@ -37,7 +37,7 @@ public class TextComposite implements Component {
 
         System.out.println("content: \n" + content);
         components.forEach(System.out::println);
-        components.forEach(Component::operation);
+        components.forEach(Component::breakText);
     }
 
     public Object getChild(int index) {

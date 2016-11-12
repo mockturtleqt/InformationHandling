@@ -1,17 +1,18 @@
 package com.epam.fourth.interpreter;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Client {
     private ArrayList<AbstractMathExpression> listExpression;
-    public Client(String expression) {
+    public Client(List<String> expression) {
         listExpression = new ArrayList<>();
         parse(expression);
     }
 
-    private void parse(String expression) {
-        for (String lexeme: expression.split("\\s+")) {
+    private void parse(List<String> expression) {
+        for (String lexeme: expression) {
             if (lexeme.isEmpty()) {
                 continue;
             }
