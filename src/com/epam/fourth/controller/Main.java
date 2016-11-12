@@ -14,7 +14,5 @@ public class Main {
         BasicBreaker breaker = new TextBreaker();
         Component text = breaker.getComponent(content);
         System.out.println(text);
-
-
     }
 }

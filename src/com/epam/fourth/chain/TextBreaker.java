@@ -9,7 +9,6 @@ import static com.epam.fourth.constant.Constant.WITH_DELIMETER;
 import static com.epam.fourth.entity.TextCompositeType.TEXT;
 
 public class TextBreaker extends BasicBreaker {
-    private Component textComposite = new TextComposite(TEXT);
 
     public TextBreaker() {
         this.setSuccessor(new ParagraphBreaker());
@@ -20,6 +19,7 @@ public class TextBreaker extends BasicBreaker {
     }
 
     public Component getComponent(String text) {
+        Component textComposite = new TextComposite(TEXT);
         for (String part : breakText(text)) {
             textComposite.add(successor.getComponent(part));
         }
