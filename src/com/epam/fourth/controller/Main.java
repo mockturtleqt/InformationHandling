@@ -3,7 +3,7 @@ package com.epam.fourth.controller;
 import com.epam.fourth.action.TextManipulation;
 import com.epam.fourth.chain.BasicBreaker;
 import com.epam.fourth.chain.TextBreaker;
-import composite.Component;
+import com.epam.fourth.composite.Component;
 
 
 public class Main {

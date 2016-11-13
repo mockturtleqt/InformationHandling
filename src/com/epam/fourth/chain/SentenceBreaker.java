@@ -1,13 +1,13 @@
 package com.epam.fourth.chain;
 
 import com.epam.fourth.interpreter.Client;
-import composite.Component;
-import composite.TextComposite;
-import composite.TextLeaf;
+import com.epam.fourth.composite.Component;
+import com.epam.fourth.composite.TextComposite;
+import com.epam.fourth.composite.TextLeaf;
 
 import static com.epam.fourth.constant.Constant.*;
-import static composite.TextCompositeType.SENTENCE;
-import static composite.TextLeafType.*;
+import static com.epam.fourth.composite.TextCompositeType.SENTENCE;
+import static com.epam.fourth.composite.TextLeafType.*;
 
 public class SentenceBreaker extends BasicBreaker {
 
