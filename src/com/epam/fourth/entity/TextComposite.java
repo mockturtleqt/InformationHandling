@@ -29,8 +29,8 @@ public class TextComposite implements Component {
     @Override
     public String toString() {
         return "TextComposite{" +
-                "components=" + '\n' + components +
-                ", type=" + type + '\n' +
+                "components=" + components + "\n" +
+                "type=" + type +
                 '}';
     }
 }

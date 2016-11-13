@@ -10,15 +10,12 @@ import static com.epam.fourth.entity.TextLeafType.*;
 
 public class SentenceBreaker extends BasicBreaker {
 
-    public String[] breakText(String sentence) {
-        return sentence.split(String.format(WITH_DELIMETER, WORD_DELIMETER));
-    }
-
-    public Component getComponent(String sentence) {
+    public Component breakText(String sentence) {
         Component textComposite = new TextComposite(SENTENCE);
-        for (String part : breakText(sentence)) {
-            if (!part.isEmpty() && !part.equals(sentence)) {
-                if (PUNCTUATION_PATTERN.matcher(part).find()) {
+        for (String part : sentence.split(WORD_DELIMITER)) {
+            part = part.trim();
+            if (!part.isEmpty()) {
+                if (COMMA_PATTERN.matcher(part).find()) {
                     textComposite.add(new TextLeaf(part, PUNCTUATION));
                 } else if (NUMBER_PATTERN.matcher(part).find()) {
                     textComposite.add(new TextLeaf(part, NUMBER));

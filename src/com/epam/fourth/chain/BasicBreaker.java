@@ -9,7 +9,5 @@ public abstract class BasicBreaker {
         this.successor = successor;
     }
 
-    public abstract String[] breakText(String data);
-
-    public abstract Component getComponent(String data);
+    public abstract Component breakText(String data);
 }

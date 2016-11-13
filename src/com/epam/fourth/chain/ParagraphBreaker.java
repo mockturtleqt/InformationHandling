@@ -2,10 +2,13 @@ package com.epam.fourth.chain;
 
 import com.epam.fourth.entity.Component;
 import com.epam.fourth.entity.TextComposite;
+import com.epam.fourth.entity.TextLeaf;
 
 import static com.epam.fourth.constant.Constant.SENTENCE_TERMINATOR;
-import static com.epam.fourth.constant.Constant.WITH_DELIMETER;
+import static com.epam.fourth.constant.Constant.SENTENCE_TERMINATOR_PATTERN;
 import static com.epam.fourth.entity.TextCompositeType.PARAGRAPH;
+import static com.epam.fourth.entity.TextLeafType.PUNCTUATION;
+
 
 public class ParagraphBreaker extends BasicBreaker {
 
@@ -13,14 +16,14 @@ public class ParagraphBreaker extends BasicBreaker {
         this.setSuccessor(new SentenceBreaker());
     }
 
-    public String[] breakText(String paragraph) {
-        return paragraph.split(String.format(WITH_DELIMETER, SENTENCE_TERMINATOR));
-    }
-
-    public Component getComponent(String paragraph) {
+    public Component breakText(String paragraph) {
         Component textComposite = new TextComposite(PARAGRAPH);
-        for (String part : breakText(paragraph)) {
-            textComposite.add(successor.getComponent(part));
+        for (String part : paragraph.split(SENTENCE_TERMINATOR)) {
+            if (SENTENCE_TERMINATOR_PATTERN.matcher(part).find()) {
+                textComposite.add(new TextLeaf(part, PUNCTUATION));
+            } else {
+                textComposite.add(successor.breakText(part));
+            }
         }
         return textComposite;
     }

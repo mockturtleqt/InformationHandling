@@ -24,7 +24,7 @@ public class TextLeaf implements Component {
 
     @Override
     public String toString() {
-        return content;
+        return content + '\n' + type + '\n';
     }
 
 

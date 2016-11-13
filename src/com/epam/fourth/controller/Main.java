@@ -12,7 +12,7 @@ public class Main {
         String content = textManipulation.readTextFromFile("./TextData.txt");
 
         BasicBreaker breaker = new TextBreaker();
-        Component text = breaker.getComponent(content);
+        Component text = breaker.breakText(content);
         System.out.println(text);
     }
 }
