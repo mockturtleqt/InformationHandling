@@ -1,15 +1,20 @@
-package com.epam.fourth.action;
+package com.epam.fourth.interpreter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import static com.epam.fourth.constant.Constant.INCREMENT_PATTERN;
+
 public class InfixToPostfixConverter {
     private Stack<Character> stack = new Stack<>();
     private List<String> postfix = new ArrayList<>();
 
-    public void convertExpression(String infix) {
+    public List<String> convertExpression(String infix) {
         StringBuilder buffer = new StringBuilder();
+
+        infix = IncrementHandler.increment(infix);
+        infix = DecrementHandler.decrement(infix);
 
         for (int i = 0; i < infix.length(); i++) {
             char currentCharacter = infix.charAt(i);
@@ -29,6 +34,7 @@ public class InfixToPostfixConverter {
         while (!stack.isEmpty()) {
             postfix.add(stack.pop().toString());
         }
+        return postfix;
     }
 
     private void processOperator(char character) {
@@ -56,9 +62,5 @@ public class InfixToPostfixConverter {
         } else {
             return 0;
         }
-    }
-
-    public List<String> getPostfix() {
-        return postfix;
     }
 }

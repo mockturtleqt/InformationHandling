@@ -12,4 +12,11 @@ public class Context {
     public void pushValue(Integer value) {
         contextValues.push(value);
     }
+
+    @Override
+    public String toString() {
+        return "Context{" +
+                "contextValues=" + contextValues +
+                '}';
+    }
 }

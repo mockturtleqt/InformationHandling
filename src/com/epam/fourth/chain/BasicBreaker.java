@@ -1,6 +1,6 @@
 package com.epam.fourth.chain;
 
-import com.epam.fourth.entity.Component;
+import composite.Component;
 
 public abstract class BasicBreaker {
     protected BasicBreaker successor;

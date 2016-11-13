@@ -1,13 +1,13 @@
 package com.epam.fourth.chain;
 
-import com.epam.fourth.entity.Component;
-import com.epam.fourth.entity.TextComposite;
-import com.epam.fourth.entity.TextLeaf;
+import composite.Component;
+import composite.TextComposite;
+import composite.TextLeaf;
 
 import static com.epam.fourth.constant.Constant.SENTENCE_TERMINATOR;
 import static com.epam.fourth.constant.Constant.SENTENCE_TERMINATOR_PATTERN;
-import static com.epam.fourth.entity.TextCompositeType.PARAGRAPH;
-import static com.epam.fourth.entity.TextLeafType.PUNCTUATION;
+import static composite.TextCompositeType.PARAGRAPH;
+import static composite.TextLeafType.PUNCTUATION;
 
 
 public class ParagraphBreaker extends BasicBreaker {

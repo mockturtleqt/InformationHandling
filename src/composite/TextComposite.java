@@ -1,4 +1,4 @@
-package com.epam.fourth.entity;
+package composite;
 
 import java.util.ArrayList;
 import java.util.List;

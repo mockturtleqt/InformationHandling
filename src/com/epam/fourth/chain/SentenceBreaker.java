@@ -1,12 +1,13 @@
 package com.epam.fourth.chain;
 
-import com.epam.fourth.entity.Component;
-import com.epam.fourth.entity.TextComposite;
-import com.epam.fourth.entity.TextLeaf;
+import com.epam.fourth.interpreter.Client;
+import composite.Component;
+import composite.TextComposite;
+import composite.TextLeaf;
 
 import static com.epam.fourth.constant.Constant.*;
-import static com.epam.fourth.entity.TextCompositeType.SENTENCE;
-import static com.epam.fourth.entity.TextLeafType.*;
+import static composite.TextCompositeType.SENTENCE;
+import static composite.TextLeafType.*;
 
 public class SentenceBreaker extends BasicBreaker {
 
@@ -18,6 +19,8 @@ public class SentenceBreaker extends BasicBreaker {
                 if (COMMA_PATTERN.matcher(part).find()) {
                     textComposite.add(new TextLeaf(part, PUNCTUATION));
                 } else if (NUMBER_PATTERN.matcher(part).find()) {
+                    Client interpreter = new Client(part);
+                    part = interpreter.calculate().toString();
                     textComposite.add(new TextLeaf(part, NUMBER));
                 } else {
                     textComposite.add(new TextLeaf(part, WORD));

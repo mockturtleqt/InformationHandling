@@ -7,10 +7,18 @@ import java.util.Scanner;
 public class Client {
     private ArrayList<AbstractMathExpression> listExpression;
 
-    public Client(List<String> expression) {
-        listExpression = new ArrayList<>();
-        parse(expression);
-    }
+//    public Client(List<String> expression) {
+//        InfixToPostfixConverter converter = new InfixToPostfixConverter();
+//        converter.convertExpression();
+//        listExpression = new ArrayList<>();
+//        parse(expression);
+//    }
+public Client(String infixExpression) {
+    listExpression = new ArrayList<>();
+    InfixToPostfixConverter converter = new InfixToPostfixConverter();
+    List<String> postfixExpression = converter.convertExpression(infixExpression);
+    parse(postfixExpression);
+}
 
     private void parse(List<String> expression) {
         for (String lexeme : expression) {
@@ -46,5 +54,12 @@ public class Client {
             terminal.interpret(context);
         }
         return context.popValue();
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "listExpression=" + listExpression +
+                '}';
     }
 }

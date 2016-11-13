@@ -11,4 +11,11 @@ public class NonterminalExpressionNumber extends AbstractMathExpression {
     public void interpret(Context context) {
         context.pushValue(number);
     }
+
+    @Override
+    public String toString() {
+        return "NontermExpNumber{" +
+                number +
+                '}';
+    }
 }

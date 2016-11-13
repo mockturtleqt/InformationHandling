@@ -1,11 +1,11 @@
 package com.epam.fourth.chain;
 
 
-import com.epam.fourth.entity.Component;
-import com.epam.fourth.entity.TextComposite;
+import composite.Component;
+import composite.TextComposite;
 
 import static com.epam.fourth.constant.Constant.NEW_LINE;
-import static com.epam.fourth.entity.TextCompositeType.TEXT;
+import static composite.TextCompositeType.TEXT;
 
 
 public class TextBreaker extends BasicBreaker {

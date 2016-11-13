@@ -1,4 +1,4 @@
-package com.epam.fourth.entity;
+package composite;
 
 public interface Component {
 
