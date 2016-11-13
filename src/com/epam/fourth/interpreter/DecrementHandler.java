@@ -3,7 +3,6 @@ package com.epam.fourth.interpreter;
 import java.util.regex.Matcher;
 
 import static com.epam.fourth.constant.Constant.DECREMENT_PATTERN;
-import static com.epam.fourth.constant.Constant.INCREMENT_PATTERN;
 import static com.epam.fourth.constant.Constant.NUMBER_PATTERN;
 
 public class DecrementHandler {

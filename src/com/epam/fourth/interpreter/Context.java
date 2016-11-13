@@ -3,13 +3,13 @@ package com.epam.fourth.interpreter;
 import java.util.ArrayDeque;
 
 public class Context {
-    private ArrayDeque<Integer> contextValues = new ArrayDeque<>();
+    private ArrayDeque<Double> contextValues = new ArrayDeque<>();
 
-    public Integer popValue() {
+    public Double popValue() {
         return contextValues.pop();
     }
 
-    public void pushValue(Integer value) {
+    public void pushValue(Double value) {
         contextValues.push(value);
     }
 

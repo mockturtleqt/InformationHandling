@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import static com.epam.fourth.constant.Constant.INCREMENT_PATTERN;
-
 public class InfixToPostfixConverter {
+
+    //private final static Logger logger = Logger.getLogger(InfixToPostfixConverter.class);
     private Stack<Character> stack = new Stack<>();
     private List<String> postfix = new ArrayList<>();
 
@@ -15,6 +15,14 @@ public class InfixToPostfixConverter {
 
         infix = IncrementHandler.increment(infix);
         infix = DecrementHandler.decrement(infix);
+        try {
+            Integer singleInteger = Integer.parseInt(infix);
+            postfix.add(singleInteger.toString());
+            return postfix;
+        } catch (NumberFormatException e) {
+            //logger.error(e);
+            System.out.println(e);
+        }
 
         for (int i = 0; i < infix.length(); i++) {
             char currentCharacter = infix.charAt(i);
@@ -23,9 +31,9 @@ public class InfixToPostfixConverter {
                 processOperator(currentCharacter);
             } else {
                 buffer.append(currentCharacter);
-                /*Check next character. If it isn't a digit, go to if block,
+                /*Check next character. If it isn't a digit or is the last element, go to if block,
                 else keep looping and adding characters to buffer.*/
-                if (i + 1 != infix.length() && !Character.isDigit(infix.charAt(i + 1))) {
+                if (i + 1 == infix.length() || !Character.isDigit(infix.charAt(i + 1))) {
                     postfix.add(buffer.toString()); //add characters from buffer to the output string
                     buffer.setLength(0); //clear buffer
                 }

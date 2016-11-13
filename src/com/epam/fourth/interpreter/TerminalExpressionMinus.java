@@ -3,8 +3,11 @@ package com.epam.fourth.interpreter;
 public class TerminalExpressionMinus extends AbstractMathExpression {
 
     public void interpret(Context context) {
-        context.pushValue(-context.popValue() + context.popValue());
+        Double secondValue = context.popValue();
+        Double firstValue = context.popValue();
+        context.pushValue(firstValue - secondValue);
     }
+
     @Override
     public String toString() {
         return "TermExpMinus{-}";

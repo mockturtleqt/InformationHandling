@@ -2,9 +2,9 @@ package com.epam.fourth.interpreter;
 
 public class NonterminalExpressionNumber extends AbstractMathExpression {
 
-    private int number;
+    private double number;
 
-    public NonterminalExpressionNumber(int number) {
+    public NonterminalExpressionNumber(double number) {
         this.number = number;
     }
 
