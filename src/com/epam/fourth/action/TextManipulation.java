@@ -2,8 +2,12 @@ package com.epam.fourth.action;
 
 import com.epam.fourth.composite.Component;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.util.Iterator;
 
 import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
 import static com.epam.fourth.composite.ComponentType.WORD;
