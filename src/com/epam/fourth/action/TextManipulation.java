@@ -31,6 +31,7 @@ public class TextManipulation {
         for (Component paragraph : textComposite.getComponents()) {
             for (Component sentence : paragraph.getComponents()) {
                 int sentenceLength = sentence.getComponents().size();
+                //(sentenceLength - 2) - sentence length without sentence terminator
                 Collections.swap(sentence.getComponents(), 0, sentenceLength - 2);
             }
         }

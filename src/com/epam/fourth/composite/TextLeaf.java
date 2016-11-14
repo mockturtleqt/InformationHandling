@@ -20,20 +20,9 @@ public class TextLeaf extends Component {
     public void remove(Component component) {
     }
 
-    public Object getChild(int index) {
-        return null;
-    }
-
-    public void appendRecursively(StringBuilder stringBuilder) {
-        stringBuilder.append(content);
-        stringBuilder.append(' ');
-    }
-
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        appendRecursively(stringBuilder);
-        return stringBuilder.toString();
+        return content;
     }
 
     public List<Component> getComponents() {

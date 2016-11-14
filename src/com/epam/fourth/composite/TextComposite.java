@@ -3,8 +3,7 @@ package com.epam.fourth.composite;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.epam.fourth.composite.ComponentType.PARAGRAPH;
-import static com.epam.fourth.composite.ComponentType.SENTENCE;
+import static com.epam.fourth.composite.ComponentType.*;
 
 public class TextComposite extends Component {
     private List<Component> components = new ArrayList<>();
@@ -24,26 +23,18 @@ public class TextComposite extends Component {
         components.remove(component);
     }
 
-    public Object getChild(int index) {
-        return components.get(index);
-    }
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        appendRecursively(stringBuilder);
+        for (Component component : components) {
+            stringBuilder.append(component.toString());
+            setLayout(stringBuilder);
+        }
         return stringBuilder.toString();
     }
 
-    public void appendRecursively(StringBuilder stringBuilder) {
-        for (Component component : components) {
-            component.appendRecursively(stringBuilder);
-        }
-        setLayout(stringBuilder);
-    }
-
     private void setLayout(StringBuilder stringBuilder) {
-        if (SENTENCE.equals(type)) {
+        if (SENTENCE.equals(type) || WORD.equals(type) || NUMBER.equals(type)) {
             stringBuilder.append(' ');
         } else if (PARAGRAPH.equals(type)) {
             stringBuilder.append('\n');

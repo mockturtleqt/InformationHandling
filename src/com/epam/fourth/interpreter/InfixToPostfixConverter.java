@@ -60,7 +60,7 @@ public class InfixToPostfixConverter {
     }
 
     private boolean hasGreaterPriority(char c1, char c2) {
-        return getPrecedence(c1) >= getPrecedence(c2);
+        return getPrecedence(c1) > getPrecedence(c2);
     }
 
     private int getPrecedence(char operator) {
