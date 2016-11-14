@@ -12,18 +12,11 @@ public class InfixToPostfixConverter {
     private ArrayDeque<Character> stack = new ArrayDeque<>();
     private List<String> postfix = new ArrayList<>();
 
-    public List<String> convertExpression(String infix) {
+    List<String> convertExpression(String infix) {
         StringBuilder buffer = new StringBuilder();
 
         infix = IncrementHandler.increment(infix);
         infix = DecrementHandler.decrement(infix);
-        try {
-            Integer singleInteger = Integer.parseInt(infix);
-            postfix.add(singleInteger.toString());
-            return postfix;
-        } catch (NumberFormatException e) {
-            logger.error(e);
-        }
 
         for (int i = 0; i < infix.length(); i++) {
             char currentCharacter = infix.charAt(i);
@@ -48,6 +41,9 @@ public class InfixToPostfixConverter {
 
     private void processOperator(char character) {
         if (stack.isEmpty() || hasGreaterPriority(character, stack.peek()) || character == '(') {
+            stack.push(character);
+        } else if (!hasGreaterPriority(character, stack.peek()) && character != ')') {
+            postfix.add(stack.pop().toString());
             stack.push(character);
         } else if (character == ')') {
             while (stack.peek() != '(') {

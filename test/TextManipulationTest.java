@@ -2,9 +2,7 @@ import com.epam.fourth.action.TextManipulation;
 import com.epam.fourth.chain.BasicBreaker;
 import com.epam.fourth.chain.TextBreaker;
 import com.epam.fourth.composite.Component;
-import com.epam.fourth.composite.TextComposite;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TextManipulationTest {

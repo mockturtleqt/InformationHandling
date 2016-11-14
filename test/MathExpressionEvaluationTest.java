@@ -28,6 +28,7 @@ public class MathExpressionEvaluationTest {
     @Test
     public void infixToPostfixConversionTest() {
         InfixToPostfixConverter converter = new InfixToPostfixConverter();
-        System.out.println(converter.convertExpression("(-5+1/2*(2+5*2))*1200"));
+        Client interpreter = new Client("(-5+1/2*(2+5*2))*1200");
+        interpreter.calculate();
     }
 }

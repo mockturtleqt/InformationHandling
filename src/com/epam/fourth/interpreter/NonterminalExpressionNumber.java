@@ -1,10 +1,10 @@
 package com.epam.fourth.interpreter;
 
-public class NonterminalExpressionNumber extends AbstractMathExpression {
+class NonterminalExpressionNumber extends AbstractMathExpression {
 
     private double number;
 
-    public NonterminalExpressionNumber(double number) {
+    NonterminalExpressionNumber(double number) {
         this.number = number;
     }
 
@@ -14,8 +14,6 @@ public class NonterminalExpressionNumber extends AbstractMathExpression {
 
     @Override
     public String toString() {
-        return "NontermExpNumber{" +
-                number +
-                '}';
+        return String.valueOf(number);
     }
 }

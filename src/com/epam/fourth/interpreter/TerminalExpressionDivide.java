@@ -1,6 +1,6 @@
 package com.epam.fourth.interpreter;
 
-public class TerminalExpressionDivide extends AbstractMathExpression {
+class TerminalExpressionDivide extends AbstractMathExpression {
 
     public void interpret(Context context) {
         Double secondValue = context.popValue();
@@ -10,6 +10,6 @@ public class TerminalExpressionDivide extends AbstractMathExpression {
 
     @Override
     public String toString() {
-        return "TermExpDivide{/}";
+        return "/";
     }
 }

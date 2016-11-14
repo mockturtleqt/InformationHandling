@@ -34,7 +34,7 @@ public class TextComposite extends Component {
     }
 
     private void setLayout(StringBuilder stringBuilder, ComponentType type) {
-        if (SENTENCE.equals(type) || WORD.equals(type) || NUMBER.equals(type)) {
+        if (WORD.equals(type) || NUMBER.equals(type) || PUNCTUATION.equals(type)) {
             stringBuilder.append(' ');
         } else if (PARAGRAPH.equals(type)) {
             stringBuilder.append('\n');
