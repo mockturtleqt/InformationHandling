@@ -1,14 +1,12 @@
 package com.epam.fourth.chain;
 
-
 import com.epam.fourth.composite.Component;
 import com.epam.fourth.composite.TextComposite;
 
-import static com.epam.fourth.constant.Constant.NEW_LINE;
-import static com.epam.fourth.composite.TextCompositeType.TEXT;
-
+import static com.epam.fourth.composite.ComponentType.TEXT;
 
 public class TextBreaker extends BasicBreaker {
+    private static final String NEW_LINE = "(?=[\\t])";
 
     public TextBreaker() {
         this.setSuccessor(new ParagraphBreaker());

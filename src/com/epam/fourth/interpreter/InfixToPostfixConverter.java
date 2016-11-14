@@ -1,13 +1,15 @@
 package com.epam.fourth.interpreter;
 
+import org.apache.log4j.Logger;
+
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 public class InfixToPostfixConverter {
 
-    //private final static Logger logger = Logger.getLogger(InfixToPostfixConverter.class);
-    private Stack<Character> stack = new Stack<>();
+    private final static Logger logger = Logger.getLogger(InfixToPostfixConverter.class);
+    private ArrayDeque<Character> stack = new ArrayDeque<>();
     private List<String> postfix = new ArrayList<>();
 
     public List<String> convertExpression(String infix) {
@@ -20,8 +22,7 @@ public class InfixToPostfixConverter {
             postfix.add(singleInteger.toString());
             return postfix;
         } catch (NumberFormatException e) {
-            //logger.error(e);
-            System.out.println(e);
+            logger.error(e);
         }
 
         for (int i = 0; i < infix.length(); i++) {

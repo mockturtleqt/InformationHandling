@@ -7,12 +7,6 @@ import java.util.Scanner;
 public class Client {
     private ArrayList<AbstractMathExpression> listExpression;
 
-    //    public Client(List<String> expression) {
-//        InfixToPostfixConverter converter = new InfixToPostfixConverter();
-//        converter.convertExpression();
-//        listExpression = new ArrayList<>();
-//        parse(expression);
-//    }
     public Client(String infixExpression) {
         listExpression = new ArrayList<>();
         InfixToPostfixConverter converter = new InfixToPostfixConverter();

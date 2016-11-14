@@ -1,22 +1,28 @@
 package com.epam.fourth.controller;
 
 import com.epam.fourth.action.TextManipulation;
+import com.epam.fourth.action.TextReader;
 import com.epam.fourth.chain.BasicBreaker;
 import com.epam.fourth.chain.TextBreaker;
 import com.epam.fourth.composite.Component;
+import com.epam.fourth.interpreter.Client;
+import com.epam.fourth.interpreter.InfixToPostfixConverter;
 
 
 public class Main {
     public static void main(String[] args) {
-        TextManipulation textManipulation = TextManipulation.getInstance();
-        String content = textManipulation.readTextFromFile("./TextData.txt");
+        TextReader textReader = new TextReader();
+        String content = textReader.readTextFromFile("./TextData.txt");
 
         BasicBreaker breaker = new TextBreaker();
         Component text = breaker.breakText(content);
         System.out.println(text);
 
+        TextManipulation textManipulation = new TextManipulation();
+        textManipulation.printOrderedSentences(text);
+        textManipulation.swapFistAndLastLexeme(text);
+        System.out.println("\n" + text);
 
-//        Client interpreter = new Client("6+9*(3-(4--))");
-//        System.out.println(interpreter.calculate());
+        textManipulation.removeCertainLexeme(text, 9, 'u');
     }
 }

@@ -4,13 +4,14 @@ import com.epam.fourth.composite.Component;
 import com.epam.fourth.composite.TextComposite;
 import com.epam.fourth.composite.TextLeaf;
 
-import static com.epam.fourth.constant.Constant.SENTENCE_TERMINATOR;
-import static com.epam.fourth.constant.Constant.SENTENCE_TERMINATOR_PATTERN;
-import static com.epam.fourth.composite.TextCompositeType.PARAGRAPH;
-import static com.epam.fourth.composite.TextLeafType.PUNCTUATION;
+import java.util.regex.Pattern;
+
+import static com.epam.fourth.composite.ComponentType.PARAGRAPH;
+import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
 
 
 public class ParagraphBreaker extends BasicBreaker {
+    private static final String SENTENCE_TERMINATOR = "(?<=[.!?])|(?=[.!?])";
 
     public ParagraphBreaker() {
         this.setSuccessor(new SentenceBreaker());
@@ -19,7 +20,7 @@ public class ParagraphBreaker extends BasicBreaker {
     public Component breakText(String paragraph) {
         Component textComposite = new TextComposite(PARAGRAPH);
         for (String part : paragraph.split(SENTENCE_TERMINATOR)) {
-            if (SENTENCE_TERMINATOR_PATTERN.matcher(part).find()) {
+            if (Pattern.compile(SENTENCE_TERMINATOR).matcher(part).find()) {
                 textComposite.add(new TextLeaf(part, PUNCTUATION));
             } else {
                 textComposite.add(successor.breakText(part));

@@ -1,15 +1,21 @@
 package com.epam.fourth.chain;
 
-import com.epam.fourth.interpreter.Client;
 import com.epam.fourth.composite.Component;
 import com.epam.fourth.composite.TextComposite;
 import com.epam.fourth.composite.TextLeaf;
+import com.epam.fourth.interpreter.Client;
 
-import static com.epam.fourth.constant.Constant.*;
-import static com.epam.fourth.composite.TextCompositeType.SENTENCE;
-import static com.epam.fourth.composite.TextLeafType.*;
+import java.util.regex.Pattern;
+
+import static com.epam.fourth.composite.ComponentType.SENTENCE;
+import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
+import static com.epam.fourth.composite.ComponentType.NUMBER;
+import static com.epam.fourth.composite.ComponentType.WORD;
+import static com.epam.fourth.constant.Constant.NUMBER_PATTERN;
 
 public class SentenceBreaker extends BasicBreaker {
+    private static final String WORD_DELIMITER = "(?<=[—,'])|(?=[—, ])";
+    private static final Pattern COMMA_PATTERN = Pattern.compile("[,—]");
 
     public Component breakText(String sentence) {
         Component textComposite = new TextComposite(SENTENCE);

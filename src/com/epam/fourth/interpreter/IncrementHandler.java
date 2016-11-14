@@ -1,11 +1,13 @@
 package com.epam.fourth.interpreter;
 
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import static com.epam.fourth.constant.Constant.INCREMENT_PATTERN;
 import static com.epam.fourth.constant.Constant.NUMBER_PATTERN;
 
 public class IncrementHandler {
+    private static final Pattern INCREMENT_PATTERN = Pattern.compile("(\\d+\\+\\+|\\+\\+\\d+)");
+
     public static String increment(String expression) {
         Matcher incrementPatternMatcher = INCREMENT_PATTERN.matcher(expression);
 

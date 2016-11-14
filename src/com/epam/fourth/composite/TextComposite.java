@@ -3,14 +3,15 @@ package com.epam.fourth.composite;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextComposite implements Component {
+import static com.epam.fourth.composite.ComponentType.PARAGRAPH;
+import static com.epam.fourth.composite.ComponentType.SENTENCE;
+
+public class TextComposite extends Component {
     private List<Component> components = new ArrayList<>();
-    private TextCompositeType type;
 
-    public TextComposite() {
-    }
+    public TextComposite() {}
 
-    public TextComposite(TextCompositeType type) {
+    public TextComposite(ComponentType type) {
         this.type = type;
     }
 
@@ -28,10 +29,32 @@ public class TextComposite implements Component {
 
     @Override
     public String toString() {
-        return "TextComposite{" +
-                "components=" + components + "\n" +
-                "type=" + type +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        appendRecursively(stringBuilder);
+        return stringBuilder.toString();
+    }
+
+    public void appendRecursively(StringBuilder stringBuilder) {
+        for (Component component : components) {
+            component.appendRecursively(stringBuilder);
+        }
+        setLayout(stringBuilder);
+    }
+
+    private void setLayout(StringBuilder stringBuilder) {
+        if (type.equals(SENTENCE)) {
+            stringBuilder.append(' ');
+        } else if (type == PARAGRAPH) {
+            stringBuilder.append('\n');
+        }
+    }
+
+    public List<Component> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<Component> components) {
+        this.components = components;
     }
 }
 
