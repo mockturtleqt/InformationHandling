@@ -3,7 +3,10 @@ package com.epam.fourth.composite;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.epam.fourth.composite.ComponentType.*;
+import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
+import static com.epam.fourth.composite.ComponentType.NUMBER;
+import static com.epam.fourth.composite.ComponentType.WORD;
+import static com.epam.fourth.composite.ComponentType.PARAGRAPH;
 
 public class TextComposite extends Component {
     private List<Component> components = new ArrayList<>();
