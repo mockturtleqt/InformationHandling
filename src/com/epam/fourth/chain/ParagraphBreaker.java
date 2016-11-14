@@ -11,7 +11,7 @@ import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
 
 
 public class ParagraphBreaker extends BasicBreaker {
-    private static final String SENTENCE_TERMINATOR = "(?<=[.!?])|(?=[.!?])";
+    private static final String SENTENCE_TERMINATOR = "(?<=[.!?])";
 
     public ParagraphBreaker() {
         this.setSuccessor(new SentenceBreaker());
@@ -20,11 +20,7 @@ public class ParagraphBreaker extends BasicBreaker {
     public Component breakText(String paragraph) {
         Component textComposite = new TextComposite(PARAGRAPH);
         for (String part : paragraph.split(SENTENCE_TERMINATOR)) {
-            if (Pattern.compile(SENTENCE_TERMINATOR).matcher(part).find()) {
-                textComposite.add(new TextLeaf(part, PUNCTUATION));
-            } else {
-                textComposite.add(successor.breakText(part));
-            }
+            textComposite.add(successor.breakText(part));
         }
         return textComposite;
     }

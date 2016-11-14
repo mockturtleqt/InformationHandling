@@ -16,7 +16,6 @@ public class Main {
 
         BasicBreaker breaker = new TextBreaker();
         Component text = breaker.breakText(content);
-        Component testText = breaker.breakText(textReader.readTextFromFile("./barney.txt"));
         System.out.println(text);
 
         TextManipulation textManipulation = new TextManipulation();

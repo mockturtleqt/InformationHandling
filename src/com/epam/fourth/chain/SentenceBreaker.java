@@ -14,15 +14,14 @@ import static com.epam.fourth.composite.ComponentType.WORD;
 import static com.epam.fourth.constant.Constant.NUMBER_PATTERN;
 
 public class SentenceBreaker extends BasicBreaker {
-    private static final String WORD_DELIMITER = "(?<=[—,'])|(?=[—, ])";
-    private static final Pattern COMMA_PATTERN = Pattern.compile("[,—]");
+    private static final String WORD_DELIMITER = "(?<=[—, '.!?])|(?=[—, '.!?])";
 
     public Component breakText(String sentence) {
         Component textComposite = new TextComposite(SENTENCE);
         for (String part : sentence.split(WORD_DELIMITER)) {
             part = part.trim();
             if (!part.isEmpty()) {
-                if (COMMA_PATTERN.matcher(part).find()) {
+                if (Pattern.compile(WORD_DELIMITER).matcher(part).find()) {
                     textComposite.add(new TextLeaf(part, PUNCTUATION));
                 } else if (NUMBER_PATTERN.matcher(part).find()) {
                     Client interpreter = new Client(part);

@@ -2,11 +2,11 @@ package com.epam.fourth.action;
 
 import com.epam.fourth.composite.Component;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
+import static com.epam.fourth.composite.ComponentType.NUMBER;
+import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
 import static com.epam.fourth.composite.ComponentType.WORD;
 
 public class TextManipulation {
@@ -14,7 +14,12 @@ public class TextManipulation {
         Map<Integer, Component> sentenceLengthMap = new TreeMap<>();
         for (Component paragraph : textComposite.getComponents()) {
             for (Component sentence : paragraph.getComponents()) {
-                int sentenceLength = sentence.getComponents().size();
+                //excluding punctuation
+                List<Component> lexemes = sentence.getComponents()
+                        .stream()
+                        .filter(lexeme -> !PUNCTUATION.equals(lexeme.getType()))
+                        .collect(Collectors.toList());
+                int sentenceLength = lexemes.size();
                 if (sentenceLength > 0) {
                     sentenceLengthMap.put(sentenceLength, sentence);
                 }
@@ -29,9 +34,7 @@ public class TextManipulation {
         for (Component paragraph : textComposite.getComponents()) {
             for (Component sentence : paragraph.getComponents()) {
                 int sentenceLength = sentence.getComponents().size();
-                if (sentenceLength > 1) {
-                    Collections.swap(sentence.getComponents(), 0, sentenceLength - 1);
-                }
+                Collections.swap(sentence.getComponents(), 0, sentenceLength - 1);
             }
         }
     }
