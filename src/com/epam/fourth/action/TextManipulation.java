@@ -20,9 +20,7 @@ public class TextManipulation {
                         .filter(lexeme -> !PUNCTUATION.equals(lexeme.getType()))
                         .collect(Collectors.toList());
                 int sentenceLength = lexemes.size();
-                if (sentenceLength > 0) {
-                    sentenceLengthMap.put(sentenceLength, sentence);
-                }
+                sentenceLengthMap.put(sentenceLength, sentence);
             }
         }
         for (Map.Entry<Integer, Component> entry : sentenceLengthMap.entrySet()) {
