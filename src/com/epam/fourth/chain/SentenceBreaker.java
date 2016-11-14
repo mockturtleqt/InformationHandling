@@ -7,10 +7,7 @@ import com.epam.fourth.interpreter.Client;
 
 import java.util.regex.Pattern;
 
-import static com.epam.fourth.composite.ComponentType.SENTENCE;
-import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
-import static com.epam.fourth.composite.ComponentType.NUMBER;
-import static com.epam.fourth.composite.ComponentType.WORD;
+import static com.epam.fourth.composite.ComponentType.*;
 import static com.epam.fourth.constant.Constant.NUMBER_PATTERN;
 
 public class SentenceBreaker extends BasicBreaker {

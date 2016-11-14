@@ -2,15 +2,18 @@ package com.epam.fourth.interpreter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Client {
     private ArrayList<AbstractMathExpression> listExpression;
+    private Map<Character, AbstractMathExpression> expressionMap;
 
     public Client(String infixExpression) {
         listExpression = new ArrayList<>();
         InfixToPostfixConverter converter = new InfixToPostfixConverter();
         List<String> postfixExpression = converter.convertExpression(infixExpression);
+        expressionMap = TerminalExpressionMapper.map();
         parse(postfixExpression);
     }
 
@@ -20,24 +23,13 @@ public class Client {
                 continue;
             }
             char temp = lexeme.charAt(0);
-            switch (temp) {
-                case '+':
-                    listExpression.add(new TerminalExpressionPlus());
-                    break;
-                case '-':
-                    listExpression.add(new TerminalExpressionMinus());
-                    break;
-                case '/':
-                    listExpression.add(new TerminalExpressionDivide());
-                    break;
-                case '*':
-                    listExpression.add(new TerminalExpressionMultiply());
-                    break;
-                default:
-                    Scanner scan = new Scanner(lexeme);
-                    if (scan.hasNextInt()) {
-                        listExpression.add(new NonterminalExpressionNumber(scan.nextInt()));
-                    }
+            if (expressionMap.containsKey(temp)) {
+                listExpression.add(expressionMap.get(temp));
+            } else {
+                Scanner scan = new Scanner(lexeme);
+                if (scan.hasNextInt()) {
+                    listExpression.add(new NonterminalExpressionNumber(scan.nextInt()));
+                }
             }
         }
     }

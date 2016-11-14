@@ -6,7 +6,8 @@ import java.util.List;
 public class TextLeaf extends Component {
     private String content;
 
-    public TextLeaf() {}
+    public TextLeaf() {
+    }
 
     public TextLeaf(String content, ComponentType type) {
         this.content = content;
@@ -41,5 +42,6 @@ public class TextLeaf extends Component {
         return singleComponent;
     }
 
-    public void setComponents(List<Component> components) { }
+    public void setComponents(List<Component> components) {
+    }
 }

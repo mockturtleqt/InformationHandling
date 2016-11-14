@@ -5,7 +5,6 @@ import com.epam.fourth.composite.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.epam.fourth.composite.ComponentType.NUMBER;
 import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
 import static com.epam.fourth.composite.ComponentType.WORD;
 
@@ -32,7 +31,7 @@ public class TextManipulation {
         for (Component paragraph : textComposite.getComponents()) {
             for (Component sentence : paragraph.getComponents()) {
                 int sentenceLength = sentence.getComponents().size();
-                Collections.swap(sentence.getComponents(), 0, sentenceLength - 1);
+                Collections.swap(sentence.getComponents(), 0, sentenceLength - 2);
             }
         }
     }

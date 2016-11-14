@@ -2,12 +2,8 @@ package com.epam.fourth.chain;
 
 import com.epam.fourth.composite.Component;
 import com.epam.fourth.composite.TextComposite;
-import com.epam.fourth.composite.TextLeaf;
-
-import java.util.regex.Pattern;
 
 import static com.epam.fourth.composite.ComponentType.PARAGRAPH;
-import static com.epam.fourth.composite.ComponentType.PUNCTUATION;
 
 
 public class ParagraphBreaker extends BasicBreaker {

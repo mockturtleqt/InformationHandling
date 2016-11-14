@@ -9,7 +9,8 @@ import static com.epam.fourth.composite.ComponentType.SENTENCE;
 public class TextComposite extends Component {
     private List<Component> components = new ArrayList<>();
 
-    public TextComposite() {}
+    public TextComposite() {
+    }
 
     public TextComposite(ComponentType type) {
         this.type = type;
