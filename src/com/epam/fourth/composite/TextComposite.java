@@ -28,12 +28,12 @@ public class TextComposite extends Component {
         StringBuilder stringBuilder = new StringBuilder();
         for (Component component : components) {
             stringBuilder.append(component.toString());
-            setLayout(stringBuilder);
+            setLayout(stringBuilder, component.getType());
         }
         return stringBuilder.toString();
     }
 
-    private void setLayout(StringBuilder stringBuilder) {
+    private void setLayout(StringBuilder stringBuilder, ComponentType type) {
         if (SENTENCE.equals(type) || WORD.equals(type) || NUMBER.equals(type)) {
             stringBuilder.append(' ');
         } else if (PARAGRAPH.equals(type)) {

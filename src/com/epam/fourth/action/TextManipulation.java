@@ -37,15 +37,15 @@ public class TextManipulation {
         }
     }
 
-    public void removeCertainLexeme(Component textComposite, int length, char firstLetter) {
+    public void removeCertainLexeme(Component textComposite, int length, String firstLetter) {
         for (Component paragraph : textComposite.getComponents()) {
             for (Component sentence : paragraph.getComponents()) {
                 Iterator iterator = sentence.getComponents().iterator();
                 while (iterator.hasNext()) {
                     Component lexeme = (Component) iterator.next();
                     if (WORD.equals(lexeme.getType()) &&
-                            lexeme.toString().length() == length + 1 &&
-                            lexeme.toString().charAt(0) == firstLetter) {
+                            lexeme.toString().length() == length &&
+                            lexeme.toString().toLowerCase().startsWith(firstLetter.toLowerCase())) {
                         iterator.remove();
                     }
                 }

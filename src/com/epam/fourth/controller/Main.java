@@ -5,7 +5,6 @@ import com.epam.fourth.action.TextReader;
 import com.epam.fourth.chain.BasicBreaker;
 import com.epam.fourth.chain.TextBreaker;
 import com.epam.fourth.composite.Component;
-import com.epam.fourth.interpreter.InfixToPostfixConverter;
 
 
 public class Main {
@@ -26,9 +25,7 @@ public class Main {
         textManipulation.swapFistAndLastLexeme(text);
         System.out.println("\n" + text);
 
-        textManipulation.removeCertainLexeme(text, 9, 'u');
+        textManipulation.removeCertainLexeme(text, 9, "u");
         System.out.println("\n" + text);
-//        InfixToPostfixConverter converter = new InfixToPostfixConverter();
-//        System.out.println(converter.convertExpression("(-5+1/2*(2+5*2))*1200"));
     }
 }

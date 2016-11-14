@@ -1,6 +1,7 @@
 import com.epam.fourth.interpreter.Client;
 import com.epam.fourth.interpreter.DecrementHandler;
 import com.epam.fourth.interpreter.IncrementHandler;
+import com.epam.fourth.interpreter.InfixToPostfixConverter;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -24,5 +25,9 @@ public class MathExpressionEvaluationTest {
         assertEquals(2, Integer.parseInt(DecrementHandler.decrement("--3")));
     }
 
-
+    @Test
+    public void infixToPostfixConversionTest() {
+        InfixToPostfixConverter converter = new InfixToPostfixConverter();
+        System.out.println(converter.convertExpression("(-5+1/2*(2+5*2))*1200"));
+    }
 }
