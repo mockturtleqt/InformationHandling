@@ -42,9 +42,9 @@ public class TextComposite extends Component {
     }
 
     private void setLayout(StringBuilder stringBuilder) {
-        if (type.equals(SENTENCE)) {
+        if (SENTENCE.equals(type)) {
             stringBuilder.append(' ');
-        } else if (type == PARAGRAPH) {
+        } else if (PARAGRAPH.equals(type)) {
             stringBuilder.append('\n');
         }
     }
